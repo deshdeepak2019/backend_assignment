@@ -39,3 +39,9 @@ class Animal(models.Model):
     )
     sound = models.CharField(max_length=64, help_text="Sound of animal")
     color = models.CharField(max_length=64, help_text="Color of animal")
+    deleted_on = models.DateTimeField(
+        default=None,
+        null=True,
+        blank=True,
+        help_text="When this animal was deleted from our database",
+    )
