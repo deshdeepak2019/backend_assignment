@@ -12,7 +12,7 @@ class AnimalType(models.IntegerChoices):
 
 
 class Animal(models.Model):
-    class Meta:  # pylint: disable=R0903
+    class Meta:
         constraints = [
             models.CheckConstraint(
                 name="age_should_be_greater_than_zero",
