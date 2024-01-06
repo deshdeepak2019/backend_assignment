@@ -127,5 +127,7 @@ The `Animal` model represents different animals in our system. It stores essenti
 1. http://127.0.0.1:8000/animal/  - Get all animals,POST new animal.
 2. http://127.0.0.1:8000/animal/id/ -  Get Delete and Modify single instance
 
+Note- We are deleting soft delete here, to keep track of data.
+
 
    
