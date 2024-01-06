@@ -70,3 +70,17 @@ http://127.0.0.1:8000/
 2. Using DRF for viewsets and REST API.
 3. Default SQLite DB is used.
 4. Token Based Authentication is used.
+5. Only Super Users can delete data.
+
+## APIs:-
+
+# Accounts API - LOGIN, LOGOUT, REGISTER
+1. Login - http://127.0.0.1:8000/accounts/login/
+2. Logout- http://127.0.0.1:8000/accounts/logout/
+3. Register- http://127.0.0.1:8000/accounts/register/
+
+# Animal API- GET, POST, PUT, PATCH, DELETE
+
+1. http://127.0.0.1:8000/animal/  - Get all animals,POST new animal.
+2. http://127.0.0.1:8000/animal/id/ -  Get Delete and Modify single instance
+   
