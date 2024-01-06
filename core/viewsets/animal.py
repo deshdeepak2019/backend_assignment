@@ -1,9 +1,8 @@
 from typing import Any
 
-from django.db.models.query import QuerySet
 from django.utils import timezone
 from rest_framework import mixins, status, viewsets
-from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.request import Request
 from rest_framework.response import Response
 
@@ -23,10 +22,7 @@ class AnimalViewSet(
 
     queryset = Animal.objects.filter(deleted_on=None)
     serializer_class = AnimalSerializer
-    authentication_classes = [TokenAuthentication]
-
-    def get_queryset(self) -> QuerySet[Animal]:
-        return super().get_queryset()
+    permission_classes = [IsAuthenticated]
 
     def create(self, request: Request, *args: Any, **kwargs: Any) -> Response:
         serializer = AnimalSerializer(data=request.data)
@@ -34,6 +30,11 @@ class AnimalViewSet(
         return super().create(request, *args, **kwargs)
 
     def destroy(self, request: Request, *args: Any, **kwargs: Any) -> Response:
+        if not request.user.is_superuser:
+            return Response(
+                status=status.HTTP_403_FORBIDDEN,
+                data={"details": "Only Super Users can delete data"},
+            )
         try:
             animal = Animal.objects.get(pk=kwargs["pk"])
         except Animal.DoesNotExist:

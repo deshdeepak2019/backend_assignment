@@ -1,6 +1,6 @@
 from typing import Any
 
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from rest_framework import status, viewsets
 from rest_framework.decorators import action
@@ -28,14 +28,15 @@ class UserViewSet(
         serializer.is_valid(raise_exception=True)
 
         user = authenticate(
+            request=request,
             username=serializer.validated_data["username"],
             password=serializer.validated_data["password"],
         )
         if user is not None:
+            login(request, user)
             response = Response(
                 status=status.HTTP_200_OK, data={"details": "Successfully Login"}
             )
-            response.set_cookie("user_id", user.pk, max_age=86400)
             return response
 
         return Response(
@@ -76,4 +77,16 @@ class UserViewSet(
         return Response(
             status=status.HTTP_201_CREATED,
             data={"details": "Account Created successfully,Please login"},
+        )
+
+    @action(
+        methods=["get"],
+        detail=False,
+        name="logout",
+    )
+    def logout(self, request: Request, *args: Any, **kwargs: Any):
+        logout(request)
+        return Response(
+            status=status.HTTP_200_OK,
+            data={"details": "Logout Successfully"},
         )
