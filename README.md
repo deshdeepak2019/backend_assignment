@@ -74,7 +74,48 @@ http://127.0.0.1:8000/
 4. Token Based Authentication is used.
 5. Only Super Users can delete data.
 
-## APIs:-
+
+
+# Animal Model
+
+The `Animal` model represents different animals in our system. It stores essential information about each animal, including its name, age, type based on food habits, sound, color, and relevant timestamps. Below is a detailed explanation of each field:
+
+- **created_on**: DateTimeField
+  - Datetime when this object was created.
+
+- **modified_on**: DateTimeField
+  - Datetime when this object was last modified.
+
+- **name**: CharField (max_length=64)
+  - Name of the animal (e.g., lion, tiger).
+
+- **age**: FloatField
+  - Age of the animal in years.
+
+- **type**: IntegerField with choices
+  - Type of animal based on food habits. Choices include:
+    - HERBIVORE (1): Herbivorous animals
+    - CARNIVORE (2): Carnivorous animals
+    - OMNIVORE (3): Omnivorous animals
+  - Default value is 0.
+
+- **sound**: CharField (max_length=64)
+  - Sound produced by the animal.
+
+- **color**: CharField (max_length=64)
+  - Color of the animal.
+
+- **deleted_on**: DateTimeField
+  - When this animal was deleted from our database. Default is set to `None` if the animal is not deleted.
+
+## Constraints
+
+- **age_should_be_greater_than_zero**
+  - Ensures that the age of the animal is greater than 0.
+
+
+
+# APIs:-
 
 # Accounts API - LOGIN, LOGOUT, REGISTER
 1. Login - http://127.0.0.1:8000/accounts/login/
