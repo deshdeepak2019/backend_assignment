@@ -64,15 +64,16 @@ http://127.0.0.1:8000/
 ## NOTE:-
 
 1. I am using SWAGGER UI for better visualization of API. but demo video is from API URL.
+    - All API will shown after login.
 
     <img width="957" alt="Screenshot 2024-01-06 195502" src="https://github.com/deshdeepak2019/backend_assignment/assets/97728256/0c0633d2-a9ec-4bda-be29-6c796c5dfcce">
 
     
 
-2. Using DRF for viewsets and REST API.
-3. Default SQLite DB is used.
-4. Token Based Authentication is used.
-5. Only Super Users can delete data.
+3. Using DRF for viewsets and REST API.
+4. Default SQLite DB is used.
+5. Token Based Authentication is used.
+6. Only Super Users can delete data.
 
 
 
