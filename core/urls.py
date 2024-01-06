@@ -25,7 +25,9 @@ urlpatterns = [
         name="swagger-ui",
     ),
 ]
-router.register("elevator-system", viewsets.AnimalViewSet, basename="elevator-system")
+# urlpatterns += [path("api-token-auth/", CustomAuthToken.as_view())]
+router.register("animal", viewsets.AnimalViewSet, basename="animal")
+# router.register("api-token-auth/", CustomAuthToken.as_view(), basename="animdfsal")
 
 
 urlpatterns += [
