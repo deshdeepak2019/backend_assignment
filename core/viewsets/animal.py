@@ -3,6 +3,7 @@ from typing import Any
 from django.db.models.query import QuerySet
 from django.utils import timezone
 from rest_framework import mixins, status, viewsets
+from rest_framework.authentication import TokenAuthentication
 from rest_framework.request import Request
 from rest_framework.response import Response
 
@@ -22,6 +23,7 @@ class AnimalViewSet(
 
     queryset = Animal.objects.filter(deleted_on=None)
     serializer_class = AnimalSerializer
+    authentication_classes = [TokenAuthentication]
 
     def get_queryset(self) -> QuerySet[Animal]:
         return super().get_queryset()

@@ -6,6 +6,7 @@ from rest_framework.schemas import get_schema_view
 from core import viewsets
 
 router = DefaultRouter()
+
 urlpatterns = [
     path(
         "openapi/",
@@ -25,9 +26,8 @@ urlpatterns = [
         name="swagger-ui",
     ),
 ]
-# urlpatterns += [path("api-token-auth/", CustomAuthToken.as_view())]
+router.register("account", viewsets.UserViewSet, basename="account")
 router.register("animal", viewsets.AnimalViewSet, basename="animal")
-# router.register("api-token-auth/", CustomAuthToken.as_view(), basename="animdfsal")
 
 
 urlpatterns += [
