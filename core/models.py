@@ -3,7 +3,7 @@ from django.db import models
 
 class AnimalType(models.IntegerChoices):
     """
-    Choices for running status of the elevator system
+    Choices for running status of the Animal Type Based on food
     """
 
     HERBIVORE = 1
