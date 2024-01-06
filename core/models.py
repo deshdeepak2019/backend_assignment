@@ -16,7 +16,7 @@ class Animal(models.Model):
         constraints = [
             models.CheckConstraint(
                 name="age_should_be_greater_than_zero",
-                check=models.Q(age__gte=0),
+                check=models.Q(age__gt=0),
             ),
         ]
 
@@ -34,7 +34,7 @@ class Animal(models.Model):
     age = models.FloatField(help_text="Age of animal in years")
     type = models.IntegerField(
         choices=AnimalType.choices,
-        default=0,
+        default=1,
         help_text="Type of animal based on food",
     )
     sound = models.CharField(max_length=64, help_text="Sound of animal")
