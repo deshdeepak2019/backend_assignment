@@ -1,5 +1,7 @@
 # Animal Details
 
+# Demo Video Link - https://drive.google.com/file/d/1S4rffu5CLM5lxJfPI-mi3EqSHTufVOLU/view
+
 Animal Data CRUD API documentation! This set of APIs allows you to perform basic CRUD operations on animal data, including storing, retrieving, modifying, and deleting information such as name, type (Herbivore or Carnivore), sound, and additional details.
 
 ## Installation :
@@ -61,7 +63,7 @@ http://127.0.0.1:8000/
 
 ## NOTE:-
 
-1. I am using SWAGGER UI for visualize and interact with the API's resources
+1. I am using SWAGGER UI for better visualization of API. but demo video is from API URL.
 
     <img width="957" alt="Screenshot 2024-01-06 195502" src="https://github.com/deshdeepak2019/backend_assignment/assets/97728256/0c0633d2-a9ec-4bda-be29-6c796c5dfcce">
 
@@ -83,4 +85,6 @@ http://127.0.0.1:8000/
 
 1. http://127.0.0.1:8000/animal/  - Get all animals,POST new animal.
 2. http://127.0.0.1:8000/animal/id/ -  Get Delete and Modify single instance
+
+
    
