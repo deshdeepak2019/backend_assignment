@@ -26,7 +26,7 @@ urlpatterns = [
         name="swagger-ui",
     ),
 ]
-router.register("account", viewsets.UserViewSet, basename="account")
+router.register("accounts", viewsets.UserViewSet, basename="accounts")
 router.register("animal", viewsets.AnimalViewSet, basename="animal")
 
 
