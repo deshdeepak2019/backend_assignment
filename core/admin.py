@@ -4,13 +4,8 @@ from .models import Animal
 
 
 @admin.register(Animal)
-class ElevatorAdmin(admin.ModelAdmin):  # type:ignore[type-arg]
+class ElevatorAdmin(admin.ModelAdmin):
     model = Animal
     can_delete = False
     can_change = False
-    list_display = (
-        "id",
-        "name",
-        "age",
-        "color",
-    )
+    list_display = ("id", "name", "age", "color", "sound", "deleted_on")

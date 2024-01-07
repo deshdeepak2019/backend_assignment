@@ -1,4 +1,9 @@
+from django.conf import settings
+from django.core.validators import MinValueValidator
 from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from rest_framework.authtoken.models import Token
 
 
 class AnimalType(models.IntegerChoices):
@@ -12,14 +17,6 @@ class AnimalType(models.IntegerChoices):
 
 
 class Animal(models.Model):
-    class Meta:
-        constraints = [
-            models.CheckConstraint(
-                name="age_should_be_greater_than_zero",
-                check=models.Q(age__gt=0),
-            ),
-        ]
-
     created_on = models.DateTimeField(
         auto_now_add=True,
         help_text="Datetime when this object was created",
@@ -31,7 +28,9 @@ class Animal(models.Model):
     name = models.CharField(
         max_length=64, help_text="Name of animal like lion,tiger,etc.."
     )
-    age = models.FloatField(help_text="Age of animal in years")
+    age = models.FloatField(
+        validators=[MinValueValidator(0.0)], help_text="Age of animal in years"
+    )
     type = models.IntegerField(
         choices=AnimalType.choices,
         default=1,
@@ -45,12 +44,6 @@ class Animal(models.Model):
         blank=True,
         help_text="When this animal was deleted from our database",
     )
-
-
-from django.conf import settings
-from django.db.models.signals import post_save
-from django.dispatch import receiver
-from rest_framework.authtoken.models import Token
 
 
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)

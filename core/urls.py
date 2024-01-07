@@ -1,11 +1,8 @@
 from django.urls import include, path
 from django.views.generic import TemplateView
-from rest_framework.routers import DefaultRouter
 from rest_framework.schemas import get_schema_view
 
-from core import viewsets
-
-router = DefaultRouter()
+from core.router import router
 
 urlpatterns = [
     path(
@@ -25,11 +22,5 @@ urlpatterns = [
         ),
         name="swagger-ui",
     ),
-]
-router.register("accounts", viewsets.UserViewSet, basename="accounts")
-router.register("animal", viewsets.AnimalViewSet, basename="animal")
-
-
-urlpatterns += [
     path("", include(router.urls)),
 ]
