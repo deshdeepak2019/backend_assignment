@@ -50,8 +50,9 @@ python manage.py runserver
 ```
 http://127.0.0.1:8000/
 ```
-5. ```python manage.py migrate``` for migrate 
-5. Open admin dashboard-
+5. ```python manage.py migrate``` for migrate
+   
+6. Open admin dashboard-
      a. Create a new superuser
          ```
          python3 manage.py createsuperuser
@@ -60,6 +61,10 @@ http://127.0.0.1:8000/
        ```
         http://127.0.0.1:8000/admin/
        ```
+7. To run test cases-
+   ```
+   python3 manage.py test
+   ```
 
 ## NOTE:-
 
