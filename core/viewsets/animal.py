@@ -16,9 +16,9 @@ class AnimalViewSet(
     mixins.CreateModelMixin,
     mixins.UpdateModelMixin,
     mixins.DestroyModelMixin,
-    viewsets.GenericViewSet,  # type:ignore[type-arg]
+    viewsets.GenericViewSet,
 ):
-    """API view set for Elevator model."""
+    """API view set for User model."""
 
     queryset = Animal.objects.filter(deleted_on=None)
     serializer_class = AnimalSerializer

@@ -4,7 +4,7 @@ from .models import Animal
 
 
 @admin.register(Animal)
-class ElevatorAdmin(admin.ModelAdmin):
+class AnimalAdmin(admin.ModelAdmin):
     model = Animal
     can_delete = False
     can_change = False

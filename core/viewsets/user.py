@@ -11,9 +11,9 @@ from core.serializers import UserLoginSerializer, UserRegisterSerializer
 
 
 class UserViewSet(
-    viewsets.GenericViewSet,  # type:ignore[type-arg]
+    viewsets.GenericViewSet,
 ):
-    """API view set for Elevator model."""
+    """API view set for User model."""
 
     queryset = User.objects.all()
     serializer_class = UserLoginSerializer
@@ -23,7 +23,7 @@ class UserViewSet(
         detail=False,
         name="login",
     )
-    def login(self, request: Request, *args: Any, **kwargs: Any):
+    def login(self, request: Request, *args: Any, **kwargs: Any) -> Response:
         serializer = UserLoginSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 
@@ -50,7 +50,7 @@ class UserViewSet(
         name="register",
         serializer_class=UserRegisterSerializer,
     )
-    def register(self, request: Request, *args: Any, **kwargs: Any):
+    def register(self, request: Request, *args: Any, **kwargs: Any) -> Response:
         serializer = UserRegisterSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         if (
@@ -84,7 +84,7 @@ class UserViewSet(
         detail=False,
         name="logout",
     )
-    def logout(self, request: Request, *args: Any, **kwargs: Any):
+    def logout(self, request: Request, *args: Any, **kwargs: Any) -> Response:
         logout(request)
         return Response(
             status=status.HTTP_200_OK,
